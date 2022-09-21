@@ -1,15 +1,26 @@
+import { Pagination } from "./Pagination";
+
 export class CardViewer {
     constructor(cards) {
-        this.cards = cards;
-        console.log(cards)
+        this.defualtCards = cards;
+        this.modifyCards = cards;
+        this.pagination = new Pagination(cards);
+    }
+
+    init() {
+       this.pagination.init();
+       this.pagination.registerObserver(this);
+
+       this.render();
     }
 
     render() {
-        const container =  document.querySelector(".container");
+        const container =  document.querySelector(".card-container");
         container.innerHTML = "";
 
-        this.cards.map(item => {
+        this.pagination.currentCards.map(item => {
             const card = document.createElement("div");
+            card.id = item.id;
             card.classList.add("card");
 
             const imageContainer = document.createElement("div");
@@ -40,6 +51,13 @@ export class CardViewer {
     addButtonListener(button) {
         button.addEventListener('click', event => {
             const delElem = event.currentTarget.parentNode;
+
+            this.modifyCards = this.modifyCards.filter(item => item.id != delElem.id);
+            this.pagination = new Pagination(this.modifyCards);
+            this.pagination.init();
+            this.pagination.registerObserver(this);
+            this.pagination.notifyObservers();
+
             delElem.parentNode.removeChild(delElem);
         })
     }

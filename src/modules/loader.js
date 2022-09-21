@@ -18,9 +18,12 @@ export class Loader {
     }
 
     makeImagesUrl() {
-       this.data.map(item => {
+        let id = 0;
+        this.data.map(item => {
            item.image = this.url + item.image;
-       })
+           item.id = `${id}`;
+           id++;
+        });
     }
 
     getDownloadedData() {

@@ -13,10 +13,18 @@ body {
     background: #556B2F;
     position: fixed;
     top: 0;
+    z-index: 100;
 }
 
-.container {
+.content {
     margin: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.card-container {
     display: flex;
     flex-wrap: wrap;
     gap: 10px 10px;
@@ -59,6 +67,7 @@ img {
     background: #556B2F;
     position: fixed;
     bottom: 0;
+    z-index: 100;
 }
 
 .close-icon::before {
@@ -98,4 +107,9 @@ button:hover {
     right: 0;
     transform: rotate(45deg);
     background-color: #fffdd0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
 }

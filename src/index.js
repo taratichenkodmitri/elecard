@@ -7,4 +7,4 @@ let loader = new Loader();
 await loader.getJson();
 
 let cardViewer = new CardViewer(loader.getDownloadedData());
-cardViewer.render();
+cardViewer.init();
