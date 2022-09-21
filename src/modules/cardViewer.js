@@ -4,7 +4,7 @@ export class CardViewer {
     constructor(cards) {
         this.defualtCards = cards;
         this.modifyCards = cards;
-        this.pagination = new Pagination(cards);
+        this.pagination = new Pagination(cards, 1);
     }
 
     init() {
@@ -53,7 +53,8 @@ export class CardViewer {
             const delElem = event.currentTarget.parentNode;
 
             this.modifyCards = this.modifyCards.filter(item => item.id != delElem.id);
-            this.pagination = new Pagination(this.modifyCards);
+            let currentPage = this.pagination.currentPage;
+            this.pagination = new Pagination(this.modifyCards, currentPage);
             this.pagination.init();
             this.pagination.registerObserver(this);
             this.pagination.notifyObservers();

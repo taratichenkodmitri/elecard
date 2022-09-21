@@ -1,9 +1,9 @@
 import {CardViewer} from "./cardViewer";
 
 export class Pagination {
-    constructor(cards) {
+    constructor(cards, currentPage) {
         this.amountCards = 24;
-        this.currentPage = 1;
+        this.currentPage = currentPage;
         this.observers = [];
         this.cards = cards;
         this.currentCards = this.cards.filter((item, index) => {
