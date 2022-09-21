@@ -22,7 +22,8 @@ export class CardViewer {
 
             const button = document.createElement("button");
             button.classList.add("close-button");
-            imageContainer.appendChild(button);
+            this.addButtonListener(button);
+            card.appendChild(button);
 
             const icon = document.createElement("span");
             icon.classList.add("close-icon");
@@ -33,6 +34,13 @@ export class CardViewer {
             card.appendChild(p);
 
             container.appendChild(card);
+        })
+    }
+
+    addButtonListener(button) {
+        button.addEventListener('click', event => {
+            const delElem = event.currentTarget.parentNode;
+            delElem.parentNode.removeChild(delElem);
         })
     }
 }

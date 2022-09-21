@@ -31,13 +31,13 @@ body {
     gap: 10px;
     background-color: #87976d;
     border-radius: 15px;
+    position: relative;
 }
 
 .image-container {
     border-radius: 15px;
     width: 100%;
     height: 80%;
-    position: relative;
 }
 
 .close-button {
