@@ -18,6 +18,7 @@ export class Pagination {
         pagination.innerHTML = '';
 
         const select = document.createElement("select");
+        select.classList.add('navigation-selector');
 
         for(let i = 1; i <= amountPages; i++) {
             const option = document.createElement("option");
