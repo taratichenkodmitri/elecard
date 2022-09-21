@@ -28,10 +28,14 @@ const optimization = () => {
 const filename = ext => isDev ? `[name].${ext}` : `[name].[hash].${ext}`;
 
 module.exports = {
+    devtool: 'source-map',
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry: {
         main: './index.js'
+    },
+    experiments: {
+        topLevelAwait: true
     },
     optimization: optimization(),
     output: {
