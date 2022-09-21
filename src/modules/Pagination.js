@@ -27,6 +27,10 @@ export class Pagination {
             select.appendChild(option);
         }
 
+        const options = Array.from(select.options);
+        const optionToSelect = options.find(item => item.value == this.currentPage);
+        optionToSelect.selected = true;
+
         select.addEventListener('change', event => {
             this.currentPage = +event.target.value;
             this.currentCards = this.cards.filter((item, index) => {

@@ -53,13 +53,14 @@ export class CardViewer {
             const delElem = event.currentTarget.parentNode;
 
             this.modifyCards = this.modifyCards.filter(item => item.id != delElem.id);
+            delElem.parentNode.removeChild(delElem);
+
             let currentPage = this.pagination.currentPage;
             this.pagination = new Pagination(this.modifyCards, currentPage);
             this.pagination.init();
             this.pagination.registerObserver(this);
             this.pagination.notifyObservers();
 
-            delElem.parentNode.removeChild(delElem);
-        })
+        });
     }
 }
