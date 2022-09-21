@@ -1,5 +1,3 @@
-import {CardViewer} from "./cardViewer";
-
 export class Pagination {
     constructor(cards, currentPage) {
         this.amountCards = 24;
