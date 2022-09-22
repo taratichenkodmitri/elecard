@@ -1,10 +1,9 @@
 import './styles/main.css'
+import {App} from "./modules/app";
 
-import { CardViewer } from "./modules/cardViewer";
-import { Loader } from "./modules/loader";
+let app = new App();
+await app.init();
+app.run();
 
-let loader = new Loader();
-await loader.getJson();
 
-let cardViewer = new CardViewer(loader.getDownloadedData());
-cardViewer.init();
+

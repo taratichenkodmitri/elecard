@@ -83,6 +83,7 @@ export class CardViewer {
     rebuildFilter() {
         let currentFilterCondition = this.filter.valueForSort;
         this.filter = new Filter(this.modifyCards, currentFilterCondition);
+        this.filter.init();
         this.filter.registerObserver(this);
         this.filter.notifyObservers();
     }
