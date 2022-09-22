@@ -173,3 +173,36 @@ button:hover {
     border: none;
     background: #87976d;
 }
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 40px;
+}
+
+.caret {
+    cursor: pointer;
+    user-select: none;
+}
+
+.caret::before {
+    content: "\25B6";
+    color: #556B2F;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+.caret-down::before {
+    transform: rotate(90deg);
+}
+
+.caret-down::before {
+    transform: rotate(90deg);
+}
+
+.hidden {
+    display: none;
+}
+
+.active {
+    display: block;
+}

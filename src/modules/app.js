@@ -1,8 +1,9 @@
 import {Loader} from "./loader";
 import {CardViewer} from "./cardViewer";
+import {TreeViewer} from "./treeViewer";
 
 export class App {
-    constructor(valueForDisplay = 'cards') {
+    constructor(valueForDisplay = 'tree') {
         this.valueForDisplay = valueForDisplay;
         this.loader = new Loader();
         this.viewer = null;
@@ -26,6 +27,7 @@ export class App {
 
     run() {
         const content =  document.querySelector(".content");
+        content.innerHTML = "";
 
         switch (this.valueForDisplay) {
             case 'cards':
@@ -41,7 +43,8 @@ export class App {
                 this.viewer.init();
                 break;
             case 'tree':
-                content.innerHTML = "";
+                this.viewer = new TreeViewer(this.loader.getDownloadedData(), this.loader.url.length);
+                this.viewer.init();
                 break;
         }
     }
