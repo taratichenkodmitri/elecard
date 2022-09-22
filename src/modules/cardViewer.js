@@ -1,15 +1,21 @@
 import { Pagination } from "./Pagination";
+import {Filter} from "./filter";
 
 export class CardViewer {
     constructor(cards) {
         this.defualtCards = cards;
         this.modifyCards = cards;
         this.pagination = new Pagination(cards, 1);
+        this.filter = new Filter(cards);
     }
 
     init() {
        this.pagination.init();
        this.pagination.registerObserver(this);
+
+       this.filter.init();
+       this.filter.registerObserver(this);
+       this.filter.notifyObservers();
 
        this.render();
     }
@@ -48,19 +54,36 @@ export class CardViewer {
         })
     }
 
+    filterData(cards) {
+        this.modifyCards = cards;
+
+        this.rebuildPagination();
+        this.render();
+    }
+
     addButtonListener(button) {
         button.addEventListener('click', event => {
             const delElem = event.currentTarget.parentNode;
 
             this.modifyCards = this.modifyCards.filter(item => item.id != delElem.id);
             delElem.parentNode.removeChild(delElem);
-
-            let currentPage = this.pagination.currentPage;
-            this.pagination = new Pagination(this.modifyCards, currentPage);
-            this.pagination.init();
-            this.pagination.registerObserver(this);
-            this.pagination.notifyObservers();
-
+            this.rebuildFilter();
+            this.rebuildPagination();
         });
+    }
+
+    rebuildPagination() {
+        let currentPage = this.pagination.currentPage;
+        this.pagination = new Pagination(this.modifyCards, currentPage);
+        this.pagination.init();
+        this.pagination.registerObserver(this);
+        this.pagination.notifyObservers();
+    }
+
+    rebuildFilter() {
+        let currentFilterCondition = this.filter.valueForSort;
+        this.filter = new Filter(this.modifyCards, currentFilterCondition);
+        this.filter.registerObserver(this);
+        this.filter.notifyObservers();
     }
 }

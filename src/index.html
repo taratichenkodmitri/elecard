@@ -5,7 +5,22 @@
     <title>Elecard</title>
 </head>
 <body>
-    <header class="header"></header>
+    <header class="header">
+        <form class="filter">
+            <p>Filter by:</p>
+            <div>
+                <input type="radio" id="filterSize"
+                       name="filterType" value="size" checked="true">
+                <label for="filterSize">Size</label>
+                <input type="radio" id="filterCategory"
+                       name="filterType" value="category">
+                <label for="filterCategory">category</label>
+            </div>
+            <div>
+                <button type="submit" class="filter__button">filter</button>
+            </div>
+        </form>
+    </header>
     <div class="content">
         <div class="card-container"></div>
         <div class="pagination"></div>
