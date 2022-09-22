@@ -1,3 +1,5 @@
+import {DateConverter} from "./dateConverter";
+
 export class TreeViewer {
     constructor(cards, urlSize) {
         this.defualtCards = cards.sort((a, b) => {
@@ -58,7 +60,8 @@ export class TreeViewer {
 
     createLeaf(data) {
         const leaf = document.createElement("li");
-        leaf.innerHTML = `image: <a href="${data.image}">${data.image.slice(this.urlSize, data.image.length)}</a>; filesize: ${data.filesize}; data: ${data.timestamp}`
+        leaf.innerHTML = `image: <a href="${data.image}">${data.image.slice(this.urlSize, data.image.length)}</a>; ` +
+                        `filesize: ${data.filesize}; data: ${DateConverter.convertTimestamp(data.timestamp)}`
         return leaf;
     }
 
