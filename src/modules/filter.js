@@ -7,6 +7,7 @@ export class Filter {
 
     init() {
         const filter =  document.querySelector(".filter");
+        filter.classList.remove('hidden');
 
         filter.addEventListener("submit", event => {
             const data = new FormData(filter);
@@ -17,6 +18,11 @@ export class Filter {
             this.notifyObservers();
             event.preventDefault();
         })
+    }
+
+    hidden() {
+        const filter =  document.querySelector(".filter");
+        filter.classList.add('hidden');
     }
 
     sortData() {

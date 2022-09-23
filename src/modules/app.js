@@ -1,16 +1,19 @@
-import {Loader} from "./loader";
-import {CardViewer} from "./cardViewer";
-import {TreeViewer} from "./treeViewer";
+import { Loader } from "./loader";
+import { CardViewer } from "./cardViewer";
+import { TreeViewer } from "./treeViewer";
+import { Storage } from "./storage";
 
 export class App {
-    constructor(valueForDisplay = 'tree') {
+    constructor(valueForDisplay = 'cards') {
         this.valueForDisplay = valueForDisplay;
         this.loader = new Loader();
         this.viewer = null;
+        this.storage = new Storage();
     }
 
     async init() {
         await this.loader.getJson();
+        this.refreshControl();
 
         const display =  document.querySelector(".display");
 
@@ -23,6 +26,21 @@ export class App {
             this.run();
             event.preventDefault();
         })
+    }
+
+    refreshControl() {
+        const refresh = document.querySelector('.refresh-button');
+        refresh.classList.add('hidden');
+
+        refresh.addEventListener('click', event => {
+            this.storage.deleteData();
+            this.run();
+        })
+    }
+
+    toggleRefreshControl() {
+        const refresh = document.querySelector('.refresh-button');
+        refresh.classList.toggle('hidden');
     }
 
     run() {
@@ -39,12 +57,17 @@ export class App {
                 pagination.classList.add("pagination");
                 content.appendChild(pagination);
 
-                this.viewer = new CardViewer(this.loader.getDownloadedData());
+                const data = this.storage.getData() || this.loader.getDownloadedData();
+
+                this.viewer = new CardViewer(data);
                 this.viewer.init();
+                this.toggleRefreshControl();
                 break;
             case 'tree':
+                this.viewer.destroy();
                 this.viewer = new TreeViewer(this.loader.getDownloadedData(), this.loader.url.length);
                 this.viewer.init();
+                this.toggleRefreshControl();
                 break;
         }
     }

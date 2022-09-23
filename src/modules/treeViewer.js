@@ -1,4 +1,4 @@
-import {DateConverter} from "./dateConverter";
+import { DateConverter } from "./dateConverter";
 
 export class TreeViewer {
     constructor(cards, urlSize) {

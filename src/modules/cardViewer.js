@@ -1,9 +1,9 @@
 import { Pagination } from "./Pagination";
-import {Filter} from "./filter";
+import { Filter } from "./filter";
+import { Storage } from "./storage";
 
 export class CardViewer {
     constructor(cards) {
-        this.defualtCards = cards;
         this.modifyCards = cards;
         this.pagination = new Pagination(cards, 1);
         this.filter = new Filter(cards);
@@ -66,6 +66,7 @@ export class CardViewer {
             const delElem = event.currentTarget.parentNode;
 
             this.modifyCards = this.modifyCards.filter(item => item.id != delElem.id);
+            Storage.setData(this.modifyCards);
             delElem.parentNode.removeChild(delElem);
             this.rebuildFilter();
             this.rebuildPagination();
@@ -86,5 +87,9 @@ export class CardViewer {
         this.filter.init();
         this.filter.registerObserver(this);
         this.filter.notifyObservers();
+    }
+
+    destroy() {
+        this.filter.hidden();
     }
 }
