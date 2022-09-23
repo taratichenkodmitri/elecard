@@ -44,6 +44,7 @@ export class Filter {
                     }
                     return 0;
                 });
+                break;
             case 'date':
                 this.cards.sort((a, b) => a.timestamp - b.timestamp);
                 break;
