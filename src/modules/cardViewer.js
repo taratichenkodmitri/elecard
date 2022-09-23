@@ -48,7 +48,7 @@ export class CardViewer {
             button.appendChild(icon);
 
             const p = document.createElement("p");
-            p.innerHTML = `category: ${item.category}; size: ${item.filesize}`;
+            p.innerHTML = `category: ${item.category}; size: ${item.filesize}; date: ${DateConverter.convertTimestamp(item.timestamp)}`;
             card.appendChild(p);
 
             container.appendChild(card);
