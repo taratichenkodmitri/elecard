@@ -9,6 +9,9 @@ export class Filter {
         const filter =  document.querySelector(".filter");
         filter.classList.remove('hidden');
 
+        const filterSize =  document.querySelector("#filterSize");
+        filterSize.checked = true;
+
         filter.addEventListener("submit", event => {
             const data = new FormData(filter);
 
