@@ -56,6 +56,17 @@ body {
     top: 0;
     right: 0;
     margin: 5px 5px;
+    width: 20px;
+    height: 20px;
+    background: #87976d;
+    border: solid #556B2F 2px;
+    border-radius: 15px;
+}
+
+.close-button:hover {
+    cursor: pointer;
+    border: none;
+    background: #556B2F;
 }
 
 img {
@@ -84,21 +95,6 @@ img {
     transform: rotate(-45deg);
     background-color: #fffdd0;
  }
-
-button {
-    width: 20px;
-    height: 20px;
-    position: relative;
-    background: #87976d;
-    border: solid #556B2F 2px;
-    border-radius: 15px;
-}
-
-button:hover {
-    cursor: pointer;
-    border: none;
-    background: #556B2F;
-}
 
 .close-icon::after {
     display: inline-block;
@@ -168,7 +164,7 @@ button:hover {
     border-radius: 15px;
 }
 
-.filter__button:hover {
+.selector__button:hover {
     cursor: pointer;
     border: none;
     background: #87976d;
@@ -225,3 +221,17 @@ a:hover {
     background: #CDFEAA;
 }
 
+.refresh-button {
+    width: 60px;
+    height: 20px;
+    position: relative;
+    background: #fffdd0;
+    border: solid #87976d 2px;
+    border-radius: 15px;
+}
+
+.refresh-button:hover {
+    cursor: pointer;
+    border: none;
+    background: #87976d;
+}
