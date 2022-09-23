@@ -243,11 +243,11 @@ a:hover {
     color: #fffdd0;
 }
 
-a:visited {
+.footer__link:visited {
     color: #fffdd0;
 }
 
-a:hover {
+.footer__link:hover {
     border-bottom: 1px solid;
     background: #87976d;
 }
