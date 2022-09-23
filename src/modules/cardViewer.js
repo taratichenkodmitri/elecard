@@ -1,6 +1,7 @@
 import { Pagination } from "./Pagination";
 import { Filter } from "./filter";
 import { Storage } from "./storage";
+import {DateConverter} from "./dateConverter";
 
 export class CardViewer {
     constructor(cards) {

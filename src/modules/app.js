@@ -9,6 +9,7 @@ export class App {
         this.loader = new Loader();
         this.viewer = null;
         this.storage = new Storage();
+        this.toggleFlag = true;
     }
 
     async init() {
@@ -61,13 +62,18 @@ export class App {
 
                 this.viewer = new CardViewer(data);
                 this.viewer.init();
-                this.toggleRefreshControl();
+                if (this.toggleFlag) {
+                    this.toggleRefreshControl();
+                    this.toggleFlag = false;
+                }
+
                 break;
             case 'tree':
                 this.viewer.destroy();
                 this.viewer = new TreeViewer(this.loader.getDownloadedData(), this.loader.url.length);
                 this.viewer.init();
                 this.toggleRefreshControl();
+                this.toggleFlag = true;
                 break;
         }
     }
