@@ -206,3 +206,21 @@ ul {
 .active {
     display: block;
 }
+
+a {
+    outline: none;
+    text-decoration: none;
+}
+
+a:link {
+    color: #556B2F;
+}
+
+a:visited {
+    color: #87976d;
+}
+
+a:hover {
+    border-bottom: 1px solid;
+    background: #CDFEAA;
+}
